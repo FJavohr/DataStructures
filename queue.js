@@ -24,11 +24,3 @@ class Queue {
     console.log(this.items.toString())
   }
 }
-
-const queue = new Queue()
-queue.enqueue('12')
-queue.enqueue('21')
-queue.enqueue('434')
-console.log(queue.isEmpty());
-console.log(queue.dequeue());
-console.log(queue.peek());

@@ -26,13 +26,3 @@ class Stack {
   }
 }
 
-
-const stack = new Stack()
-console.log(stack.isEmpty());
-stack.push(20)
-stack.push(10)
-stack.push(22)
-
-console.log(stack.pop())
-console.log(stack.peek())
-stack.print()

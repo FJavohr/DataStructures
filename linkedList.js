@@ -145,22 +145,3 @@ class LinkedList {
     }
   }
 }
-
-const list = new LinkedList();
-
-console.log(list.isEmpty());
-console.log(list.getSize());
-
-list.append(10);
-list.append(20);
-list.append(30);
-list.print();
-
-// console.log(list.removeFrom(1))
-list.print();
-console.log(list.getSize());
-
-// console.log(list.removeValue(30))
-console.log(list.search(20));
-list.reverse()
-list.print()
