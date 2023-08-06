@@ -1,79 +1,84 @@
-class circularQueue {
+class CircularQueue {
   constructor(capacity) {
-    this.items = new Array(capacity)
-    this.capacity = capacity;
+    this.items = new Array(capacity);
+    this.rear = -1;
+    this.front = -1;
     this.currentLength = 0;
-    this.rear = -1
-    this.front = -1
-  }
-  isFull() {
-    return this.currentLength === this.capacity
-  }
-  isEmpty() {
-    return this.currentLength === 0
+    this.capacity = capacity;
   }
 
-  enqueue(element) {
+  isFull() {
+    return this.currentLength === this.capacity;
+  }
+
+  isEmpty() {
+    return this.currentLength === 0;
+  }
+
+  size() {
+    return this.currentLength;
+  }
+
+  enqueue(item) {
     if (!this.isFull()) {
-      this.rear = (this.rear + 1) % this.capacity
-      this.items[this.rear] = element;
-      this.currentLength += 1
+      this.rear = (this.rear + 1) % this.capacity;
+      this.items[this.rear] = item;
+      this.currentLength += 1;
       if (this.front === -1) {
-        return this.front = this.rear;
+        this.front = this.rear;
       }
     }
   }
+
   dequeue() {
-    if (!this.isEmpty()) {
-      return null
-    }
-    const item = this.items[this.front]
-    this.items[this.front] = null
-    this.front = (this.front + 1) % this.capacity;
-    this.currentLength -= 1
     if (this.isEmpty()) {
-      this.front = -1
-      this.rear = -1
+      return null;
     }
-    return item
+    const item = this.items[this.front];
+    this.items[this.front] = null;
+    this.front = (this.front + 1) % this.capacity;
+    this.currentLength -= 1;
+    if (this.isEmpty()) {
+      this.front = -1;
+      this.rear = -1;
+    }
+    return item;
   }
+
   peek() {
     if (!this.isEmpty()) {
-      return this.items[this.front]
+      return this.items[this.front];
     }
-    return null
+    return null;
   }
+
   print() {
     if (this.isEmpty()) {
-      console.log('Queue is empty');
-    }
-    else {
+      console.log("Queue is empty");
+    } else {
       let i;
-      let str = ''
+      let str = "";
       for (i = this.front; i !== this.rear; i = (i + 1) % this.capacity) {
-        str += this.items[i] = " "
+        str += this.items[i] + " ";
       }
-      str += this.items[i]
-      console.log(str)
+      str += this.items[i];
+      console.log(str);
     }
   }
-};
+}
 
-
-const queue = new circularQueue(5);
-
+const queue = new CircularQueue(5);
 console.log(queue.isEmpty());
-
-queue.enqueue(10)
-queue.enqueue(20)
-queue.enqueue(30)
-queue.enqueue(40)
-queue.enqueue(50)
-
+queue.enqueue(10);
+queue.enqueue(20);
+queue.enqueue(30);
+queue.enqueue(40);
+queue.enqueue(50);
+console.log(queue.size());
+queue.print();
 console.log(queue.isFull());
-
-queue.print()
-
 console.log(queue.dequeue());
 console.log(queue.peek());
-queue.print()
+queue.print();
+queue.enqueue(60);
+queue.print();
