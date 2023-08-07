@@ -25,7 +25,7 @@ class LinkedList {
       let curr = this.head
       let listValues = '';
       while (curr) {
-        listValues += `${curr.value}`
+        listValues += `${curr.value} `
         curr = curr.next
       }
       console.log(listValues);
@@ -39,7 +39,7 @@ class LinkedList {
       this.tail = node
     } else {
       node.next = this.head;
-      this.head = node
+      this.head = node;
     }
     this.size++
   }
@@ -83,3 +83,4 @@ class LinkedList {
     return value
   }
 }
+module.exports = LinkedList
