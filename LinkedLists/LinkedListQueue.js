@@ -19,7 +19,7 @@ class LinkedListQueue {
   getSize() {
     return this.list.getSize()
   }
-  print(){
+  print() {
     return this.list.print()
   }
 }
